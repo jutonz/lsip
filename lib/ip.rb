@@ -40,9 +40,9 @@ class IP
   end
 
   def password
-    'super_secret_password'
+    pw = ENV['LSIP_PASSWORD']
+    raise 'Authentication failed. Set LSIP_PASSWORD and try again' unless pw
   end
-
   def pretty(tr)
     from_content = tr.css 'center'
     TR.new(from_content).to_s
